@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RA STORE - Riski Andika</title>
+
+  <!-- Font & Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- CSS -->
+  <style>
+    :root {
+      --bg-color: #f5f7fa;
+      --text-color: #333;
+      --card-color: #ffffff;
+      --primary-color: #4e54c8;
+      --button-color: #4e54c8;
+      --button-hover: #3b42b2;
+    }
+
+    body.dark {
+      --bg-color: #1f1f1f;
+      --text-color: #f1f1f1;
+      --card-color: #2c2c2c;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--card-color);
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    .navbar a {
+      text-decoration: none;
+      margin-left: 20px;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      background: linear-gradient(135deg, var(--primary-color), #8f94fb);
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    /* Link Buttons */
+    .links a,
+    .social-icons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: var(--card-color);
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover,
+    .social-icons a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Product Status */
+    .product-status {
+      margin-top: 30px;
+      background-color: var(--card-color);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    #checkAvailabilityBtn {
+      padding: 10px 18px;
+      background-color: var(--button-color);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    #checkAvailabilityBtn:hover {
+      background-color: var(--button-hover);
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .floating-buttons a {
+      background-color: #25d366;
+      color: white;
+      font-size: 20px;
+      padding: 14px;
+      border-radius: 50%;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .floating-buttons a:hover {
+      background-color: #1ebe5d;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-toggle {
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-color);
+      background: none;
+      border: none;
+      font-weight: 600;
+    }
+
+    @media (min-width: 768px) {
+      .navbar {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2>RA STORE</h2>
+    <div>
+      <a href="index.html">Beranda</a>
+      <a href="daftar-toko.html">Toko</a>
+      <a href="chat.html">Chat</a>
+      <a href="https://saweria.co/riskiandikayt" target="_blank">Donasi</a>
+    </div>
+  </div>
+
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <a href="chat.html" title="Chat Publish"><i class="fas fa-comment-dots"></i></a>
+    <a href="botz-riski.html" title="BOTZ RISKI Asisten"><i class="fas fa-robot"></i></a>
+    <a href="#" title="GROUP WHATSAPP"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <img src="https://i.ibb.co.com/yfLvHzD/riski-andika.jpg" alt="Riski Andika" class="profile-image">
+      <h1>Riski Andika</h1>
+      <p>Developer | Designer | Content Creator</p>
+    </div>
+
+<!-- Product Status -->
+<div id="productStatus" class="product-status">
+  <p>Status Produk: <span id="statusText">Memeriksa...</span></p>
+  <button id="checkAvailabilityBtn">Cek Ketersediaan</button>
+  
+  <div id="waOrderBtnContainer" style="margin-top:15px; display:none;">
+    <a id="waOrderBtn" target="_blank" style="
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    ">
+      Pesan via WhatsApp
+    </a>
+  </div>
+</div>
+
+    <!-- Links -->
+    <div class="links">
+      <a href="daftar-toko.html"" target="_blank"><i class="fas fa-box"></i> Produk</a>
+      <a href="gamepad.html" target="_blank"><i class="fas fa-gamepad"></i> Game</a>
+      <a href="https://www.instagram.com/@riski_andika_yt" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/riskiandikayt" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://twitter.com/riski_andika_yt" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+      <a href="https://youtube.com/@riskiandikayt1302" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://tiktok.com/@Riski_andika_yt" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/riskiandika226" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/riskiandika226" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/riskiandika226" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/riskiandika226" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/riskiandika226" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+
+    <!-- Dark Mode Button -->
+    <button class="dark-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  </div>
+
+  <!-- Script -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>

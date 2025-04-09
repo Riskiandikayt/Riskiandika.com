@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Chat Group</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="./config.js"></script>
+  <style>
+    body {
+      background-color: #e5ddd5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+
+    .chat-container {
+      background-color: #fff;
+      width: 100%;
+      max-width: 600px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .chat-header {
+      background-color: #075e54;
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-status {
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .status-online {
+      color: #25D366;
+      font-weight: bold;
+    }
+
+    .username-field {
+      padding: 10px 16px;
+      background-color: #f1f1f1;
+    }
+
+    .username-field input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .chat-box {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      background-color: #dcf8c6;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-message {
+      display: flex;
+      gap: 10px;
+      max-width: 80%;
+    }
+
+    .chat-message.self {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .chat-bubble {
+      background-color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      position: relative;
+      word-wrap: break-word;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .chat-message.self .chat-bubble {
+      background-color: #dcf8c6;
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-message.other .chat-bubble {
+      background-color: #ffffff;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-name {
+      font-size: 12px;
+      font-weight: bold;
+      color: #075e54;
+      margin-top: 5px;
+      text-align: right;
+    }
+
+    .chat-time {
+      font-size: 10px;
+      color: #999;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .chat-form {
+      display: flex;
+      padding: 12px;
+      background-color: #f0f0f0;
+      gap: 8px;
+    }
+
+    .chat-form input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      flex: 1;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .chat-form button {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .chat-form button:hover {
+      background-color: #128c7e;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>GROUP RISKI ANDIKA</h2>
+      <div class="chat-status">
+        <span class="status-online"> Online</span><br>
+        <span id="online-count">0 Pengguna</span>
+      </div>
+    </div>
+
+    <div class="username-field">
+      <input type="text" id="username" placeholder="Masukkan nama Anda" required />
+    </div>
+
+    <div id="chat-box" class="chat-box"></div>
+
+    <form id="chat-form" class="chat-form">
+      <input type="text" id="message" placeholder="Ketik pesan..." required />
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import config from './config.js';
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+    import {
+      getDatabase,
+      ref,
+      push,
+      onChildAdded,
+      set,
+      onValue,
+      onDisconnect
+    } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+
+    // Inisialisasi Firebase
+    const app = initializeApp(config.firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
+
+    // Referensi database
+    const chatRef = ref(db, "chat-group");
+    const userId = Math.random().toString(36).slice(2);
+    const onlineRef = ref(db, "online-users/" + userId);
+
+    // Tandai pengguna online
+    set(onlineRef, true);
+    onDisconnect(onlineRef).remove();
+
+    // Elemen DOM
+    const chatBox = document.getElementById("chat-box");
+    const chatForm = document.getElementById("chat-form");
+    const usernameInput = document.getElementById("username");
+    const messageInput = document.getElementById("message");
+    const onlineCount = document.getElementById("online-count");
+
+    // Hitung pengguna online
+    onValue(ref(db, "online-users"), (snapshot) => {
+      const count = snapshot.size;
+      onlineCount.textContent = `${count} Pengguna`;
+    });
+
+    // Tampilkan pesan baru
+    onChildAdded(chatRef, (data) => {
+      const { user, text, timestamp } = data.val();
+      const currentUser = usernameInput.value.trim();
+      const isSelf = user === currentUser;
+
+      const messageElement = document.createElement("div");
+      messageElement.className = `chat-message ${isSelf ? 'self' : 'other'}`;
+      messageElement.innerHTML = `
+        <img class="avatar" src="https://api.dicebear.com/6.x/initials/svg?seed=${user}" alt="Avatar" />
+        <div class="chat-bubble">
+          <div>${text}</div>
+          <div class="chat-time">${new Date(timestamp).toLocaleTimeString()}</div>
+          <div class="chat-name">${user}</div>
+        </div>
+      `;
+      chatBox.appendChild(messageElement);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // Kirim pesan
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const user = usernameInput.value.trim();
+      const text = messageInput.value.trim();
+
+      if (user && text) {
+        push(chatRef, {
+          user,
+          text,
+          timestamp: Date.now()
+        });
+
+        messageInput.value = "";
+      }
+    });
+  </script>
+</body>

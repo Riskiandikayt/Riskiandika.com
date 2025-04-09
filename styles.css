@@ -1,0 +1,447 @@
+* Gaya umum untuk seluruh halaman */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #444;
+}
+
+/* Gaya untuk daftar harga */
+#price-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#price-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#price-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+#price-list li:last-child {
+    border-bottom: none;
+}
+
+#price-list li strong {
+    font-weight: bold;
+}
+
+/* Gaya tombol kembali */
+.back-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk layar kecil */
+@media (max-width: 600px) {
+    #price-list {
+        padding: 15px;
+    }
+
+    #price-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .back-button {
+        width: 90%;
+        text-align: center;
+    }
+}* Gaya umum untuk seluruh halaman */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #444;
+}
+
+/* Gaya untuk daftar harga */
+#price-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#price-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#price-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+#price-list li:last-child {
+    border-bottom: none;
+}
+
+#price-list li strong {
+    font-weight: bold;
+}
+
+/* Gaya tombol kembali */
+.back-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk layar kecil */
+@media (max-width: 600px) {
+    #price-list {
+        padding: 15px;
+    }
+
+    #price-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .back-button {
+        width: 90%;
+        text-align: center;
+        }
+/* Reset dan font dasar */
+ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #e5ddd5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Container utama */
+.chat-container {
+  background-color: #fff;
+  width: 100%;
+  max-width: 600px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Input nama */
+#username {
+  padding: 10px 16px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Header */
+.chat-header {
+  background-color: #075e54;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chat-header h2 {
+  font-size: 20px;
+}
+
+.chat-username {
+  font-size: 14px;
+  color: #c8e6c9;
+}
+
+/* Box pesan */
+.chat-box {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: #dcf8c6;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Pesan */
+.chat-message {
+  background-color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  align-self: flex-start;
+  word-wrap: break-word;
+}
+
+.chat-message strong {
+  color: #075e54;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.timestamp {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  text-align: right;
+  margin-top: 6px;
+}
+
+/* Form input */
+.chat-form {
+  display: flex;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  gap: 10px;
+}
+
+.chat-form input#message {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+}
+
+.chat-form button {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-form button:hover {
+  background-color: #128c7e;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  .chat-container {
+    height: 95vh;
+    border-radius: 0;
+    max-width: 100%;
+  }
+
+  .chat-form input,
+  .chat-form button {
+    font-size: 13px;
+  }
+  body {
+  background-color: #e5ddd5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+}
+
+.chat-container {
+  background-color: #fff;
+  width: 100%;
+  max-width: 600px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.chat-header {
+  background-color: #075e54;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-status {
+  font-size: 14px;
+  text-align: right;
+}
+
+.status-online {
+  color: #25D366;
+  font-weight: bold;
+}
+
+.username-field {
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+}
+
+.username-field input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: #dcf8c6;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  display: flex;
+  gap: 10px;
+  max-width: 80%;
+}
+
+.chat-message.self {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chat-bubble {
+  background-color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  position: relative;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chat-message.self .chat-bubble {
+  background-color: #dcf8c6;
+  border-bottom-right-radius: 0;
+}
+
+.chat-message.other .chat-bubble {
+  background-color: #ffffff;
+  border-bottom-left-radius: 0;
+}
+
+.chat-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #075e54;
+  margin-top: 5px;
+  text-align: right;
+}
+
+.chat-time {
+  font-size: 10px;
+  color: #999;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.chat-form {
+  display: flex;
+  padding: 12px;
+  background-color: #f0f0f0;
+  gap: 8px;
+}
+
+.chat-form input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  flex: 1;
+  outline: none;
+  font-size: 14px;
+}
+
+.chat-form button {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.chat-form button:hover {
+  background-color: #128c7e;
+}
+
+}

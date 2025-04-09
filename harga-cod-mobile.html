@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Harga Twitter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h2 id="title-page">Daftar Harga</h2>
+    <div id="price-list">Memuat data...</div>
+    <a href="index.html" class="back-button">Kembali</a>
+  </main>
+
+  <script type="module">
+    import config from './config.js';
+
+    const CATEGORY_MAP = {
+      'harga-twitter.html': 'Twitter',
+      'harga-pulsa.html': 'Pulsa',
+      'harga-pubg-mobile.html': 'PUBG Mobile',
+      'harga-pln.html': 'PLN',
+      'harga-mobile-legends.html': 'Mobile Legends',
+      'harga-linkedin.html': 'LinkedIn',
+      'harga-kuota.html': 'Kuota',
+      'harga-instagram.html': 'Instagram',
+      'harga-github.html': 'GitHub',
+      'harga-free-fire.html': 'Free Fire',
+      'harga-facebook.html': 'Facebook',
+      'harga-cod-mobile.html': 'Call of Duty Mobile'
+    };
+
+    const currentFile = window.location.pathname.split('/').pop();
+    const CATEGORY = CATEGORY_MAP[currentFile] || 'Lainnya';
+    const API_URL = config.apiHargaUrl;
+    const NOMOR_WA = config.nomorWhatsapp;
+
+    document.getElementById('title-page').textContent = `Daftar Harga ${CATEGORY}`;
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+
+        const listContainer = document.getElementById('price-list');
+        const filtered = data.data.filter(p => p.kategori.toLowerCase() === CATEGORY.toLowerCase());
+
+        if (!filtered.length) {
+          listContainer.innerHTML = "Tidak ada produk dalam kategori ini.";
+          return;
+        }
+
+        let html = "";
+        filtered.forEach(p => {
+          const nama = p.nama;
+          const harga = parseInt(p.harga);
+          const stok = p.status === "ready" ? "Tersedia" : "Kosong";
+          const kode = p.kode;
+
+          const waLink = `https://wa.me/${NOMOR_WA}?text=Halo%20saya%20ingin%20order%20produk:%0A- Nama: ${nama}%0A- Kode: ${kode}%0A- Harga: Rp${harga.toLocaleString()}%0A- Stok: ${stok}`;
+
+          html += `
+            <div class="produk-card">
+              <h3>${nama}</h3>
+              <p>Harga: Rp${harga.toLocaleString()}</p>
+              <p>Stok: ${stok}</p>
+              <a href="${waLink}" target="_blank" class="btn-beli">Pesan via WhatsApp</a>
+            </div>
+          `;
+        });
+
+        listContainer.innerHTML = html;
+      } catch (err) {
+        document.getElementById('price-list').innerText = "Gagal memuat data.";
+        console.error(err);
+      }
+    }
+
+    fetchProducts();
+  </script>
+</body>
+</html>
