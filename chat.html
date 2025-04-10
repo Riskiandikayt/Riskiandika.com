@@ -2,13 +2,11 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live Chat Group</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script type="module" src="./config.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Chat WhatsApp Style</title>
   <style>
-    body {
-      background-color: #e5ddd5;
+    body {     
+     background-color: #e5ddd5;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,7 +18,7 @@
     .chat-container {
       background-color: #fff;
       width: 100%;
-      max-width: 600px;
+      max-width: 500px;
       height: 90vh;
       display: flex;
       flex-direction: column;
@@ -32,14 +30,14 @@
     .chat-header {
       background-color: #075e54;
       color: white;
-      padding: 12px 16px;
+      padding: 10px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .chat-status {
-      font-size: 14px;
+      font-size: 13px;
       text-align: right;
     }
 
@@ -48,34 +46,36 @@
       font-weight: bold;
     }
 
-    .username-field {
-      padding: 10px 16px;
+    .username-field,
+    .status-field {
+      padding: 8px 14px;
       background-color: #f1f1f1;
     }
 
-    .username-field input {
+    .username-field input,
+    .status-field input {
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       border: none;
-      border-radius: 20px;
+      border-radius: 18px;
       outline: none;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .chat-box {
       flex: 1;
-      padding: 16px;
+      padding: 12px;
       overflow-y: auto;
       background-color: #dcf8c6;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .chat-message {
       display: flex;
-      gap: 10px;
-      max-width: 80%;
+      gap: 8px;
+      max-width: 75%;
     }
 
     .chat-message.self {
@@ -84,18 +84,19 @@
     }
 
     .avatar {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
     }
 
     .chat-bubble {
       background-color: #ffffff;
-      padding: 10px 14px;
-      border-radius: 12px;
+      padding: 8px 12px;
+      border-radius: 10px;
       position: relative;
       word-wrap: break-word;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 13px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
     .chat-message.self .chat-bubble {
@@ -109,10 +110,10 @@
     }
 
     .chat-name {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
       color: #075e54;
-      margin-top: 5px;
+      margin-top: 4px;
       text-align: right;
     }
 
@@ -120,47 +121,101 @@
       font-size: 10px;
       color: #999;
       text-align: right;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     .chat-form {
       display: flex;
-      padding: 12px;
+      padding: 10px;
       background-color: #f0f0f0;
-      gap: 8px;
+      gap: 6px;
     }
 
     .chat-form input[type="text"] {
-      padding: 10px;
+      padding: 8px;
       border: none;
-      border-radius: 20px;
+      border-radius: 18px;
       flex: 1;
       outline: none;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .chat-form button {
       background-color: #25d366;
       color: white;
       border: none;
-      padding: 10px 18px;
-      border-radius: 20px;
+      padding: 8px 14px;
+      border-radius: 18px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 13px;
       transition: background-color 0.3s ease;
     }
 
     .chat-form button:hover {
       background-color: #128c7e;
     }
+
+    .reply-btn, .delete-btn, .edit-btn {
+      margin: 4px 2px 0 2px;
+      padding: 3px 6px;
+      font-size: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .reply-btn {
+      background-color: #e0f7fa;
+      color: #006064;
+    }
+
+    .reply-btn:hover {
+      background-color: #b2ebf2;
+    }
+
+    .edit-btn {
+      background-color: #fff3e0;
+      color: #e65100;
+    }
+
+    .edit-btn:hover {
+      background-color: #ffe0b2;
+    }
+
+    .delete-btn {
+      background-color: #ffebee;
+      color: #c62828;
+    }
+
+    .delete-btn:hover {
+      background-color: #ffcdd2;
+    }
+    .blinking-dot {
+  animation: rainbowBlink 2s linear infinite;
+}
+
+@keyframes rainbowBlink {
+  0%   { color: red; }
+  10%  { color: orangered; }
+  20%  { color: orange; }
+  30%  { color: gold; }
+  40%  { color: yellow; }
+  50%  { color: lime; }
+  60%  { color: green; }
+  70%  { color: cyan; }
+  80%  { color: blue; }
+  90%  { color: indigo; }
+  100% { color: violet; }
+}
   </style>
-</head>
-<body>
+
   <div class="chat-container">
     <div class="chat-header">
       <h2>GROUP RISKI ANDIKA</h2>
       <div class="chat-status">
-        <span class="status-online"> Online</span><br>
+<span class="status-online"><span class="blinking-dot">⬤</span> Online</span><br>	
         <span id="online-count">0 Pengguna</span>
       </div>
     </div>
@@ -177,82 +232,226 @@
     </form>
   </div>
 
-  <script type="module">
-    import config from './config.js';
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
-    import {
-      getDatabase,
-      ref,
-      push,
-      onChildAdded,
-      set,
-      onValue,
-      onDisconnect
-    } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+<script type="module"> 
+  import config from './config.js';
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+  import {
+    getDatabase,
+    ref,
+    push,
+    onChildAdded,
+    onChildChanged,
+    set,
+    onValue,
+    onDisconnect,
+    update,
+    remove
+  } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
-    // Inisialisasi Firebase
-    const app = initializeApp(config.firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getDatabase(app);
+  // Inisialisasi Firebase
+  const app = initializeApp(config.firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getDatabase(app);
 
-    // Referensi database
-    const chatRef = ref(db, "chat-group");
-    const userId = Math.random().toString(36).slice(2);
-    const onlineRef = ref(db, "online-users/" + userId);
+  // Referensi database
+  const chatRef = ref(db, "chat-group");
+  const userId = Math.random().toString(36).slice(2);
+  const onlineRef = ref(db, "online-users/" + userId);
 
-    // Tandai pengguna online
-    set(onlineRef, true);
-    onDisconnect(onlineRef).remove();
+  // Tandai pengguna online
+  set(onlineRef, true);
+  onDisconnect(onlineRef).remove();
 
-    // Elemen DOM
-    const chatBox = document.getElementById("chat-box");
-    const chatForm = document.getElementById("chat-form");
-    const usernameInput = document.getElementById("username");
-    const messageInput = document.getElementById("message");
-    const onlineCount = document.getElementById("online-count");
+  // Elemen DOM
+  const chatBox = document.getElementById("chat-box");
+  const chatForm = document.getElementById("chat-form");
+  const usernameInput = document.getElementById("username");
+  const messageInput = document.getElementById("message");
+  const onlineCount = document.getElementById("online-count");
 
-    // Hitung pengguna online
-    onValue(ref(db, "online-users"), (snapshot) => {
-      const count = snapshot.size;
-      onlineCount.textContent = `${count} Pengguna`;
-    });
+  // [UBAHAN] Variabel untuk menyimpan pesan yang dibalas
+  let replyToMessage = null;
 
-    // Tampilkan pesan baru
-    onChildAdded(chatRef, (data) => {
-      const { user, text, timestamp } = data.val();
-      const currentUser = usernameInput.value.trim();
-      const isSelf = user === currentUser;
+  // Hitung pengguna online
+  onValue(ref(db, "online-users"), (snapshot) => {
+    const count = snapshot.size;
+    onlineCount.textContent = `${count} Pengguna`;
+  });
 
-      const messageElement = document.createElement("div");
-      messageElement.className = `chat-message ${isSelf ? 'self' : 'other'}`;
-      messageElement.innerHTML = `
-        <img class="avatar" src="https://api.dicebear.com/6.x/initials/svg?seed=${user}" alt="Avatar" />
-        <div class="chat-bubble">
-          <div>${text}</div>
-          <div class="chat-time">${new Date(timestamp).toLocaleTimeString()}</div>
-          <div class="chat-name">${user}</div>
-        </div>
-      `;
-      chatBox.appendChild(messageElement);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    });
+  // Tampilkan pesan baru
+  onChildAdded(chatRef, (data) => {
+    const { user, text, timestamp, edited, replyTo } = data.val(); // [UBAHAN]
+    const currentUser = usernameInput.value.trim();
+    const isSelf = user === currentUser;
 
-    // Kirim pesan
-    chatForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const user = usernameInput.value.trim();
-      const text = messageInput.value.trim();
+    const messageElement = document.createElement("div");
+    messageElement.className = `chat-message ${isSelf ? 'self' : 'other'}`;
+    messageElement.setAttribute("data-id", data.key);
 
-      if (user && text) {
-        push(chatRef, {
-          user,
-          text,
-          timestamp: Date.now()
-        });
+    const avatar = document.createElement("img");
+    avatar.className = "avatar";
+    avatar.src = `https://api.dicebear.com/6.x/initials/svg?seed=${user}`;
+    avatar.alt = "Avatar";
 
-        messageInput.value = "";
+    const bubble = document.createElement("div");
+    bubble.className = "chat-bubble";
+
+    // [UBAHAN] Jika pesan ini membalas pesan lain, tampilkan reply box
+    if (replyTo) {
+      const replyBox = document.createElement("div");
+      replyBox.className = "reply-box";
+      replyBox.style.fontSize = "0.85em";
+      replyBox.style.color = "#555";
+      replyBox.style.borderLeft = "2px solid #ccc";
+      replyBox.style.paddingLeft = "6px";
+      replyBox.style.marginBottom = "4px";
+      replyBox.innerHTML = `<strong>${replyTo.user}</strong>: ${replyTo.text}`;
+      bubble.appendChild(replyBox);
+    }
+
+    const textDiv = document.createElement("div");
+    textDiv.className = "chat-text";
+    textDiv.textContent = text;
+
+    const timeDiv = document.createElement("div");
+    timeDiv.className = "chat-time";
+    timeDiv.textContent = new Date(timestamp).toLocaleTimeString();
+
+    const nameDiv = document.createElement("div");
+    nameDiv.className = "chat-name";
+    nameDiv.textContent = user;
+
+    bubble.appendChild(nameDiv);
+    bubble.appendChild(textDiv);
+
+    if (edited) {
+      const editedLabel = document.createElement("small");
+      editedLabel.textContent = "(diedit)";
+      editedLabel.style.color = "#888";
+      bubble.appendChild(editedLabel);
+    }
+
+    bubble.appendChild(timeDiv);
+
+    // Tombol edit & hapus hanya untuk pesan sendiri
+    if (isSelf) {
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "Edit";
+      editBtn.className = "edit-btn";
+      editBtn.onclick = () => {
+        const newText = prompt("Edit pesan:", textDiv.textContent);
+        if (newText !== null && newText.trim()) {
+          const messageRef = ref(db, `chat-group/${data.key}`);
+          update(messageRef, {
+            text: newText.trim(),
+            edited: true
+          });
+        }
+      };
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Hapus";
+      deleteBtn.className = "delete-btn";
+      deleteBtn.onclick = () => {
+        if (confirm("Gabungkan teks ke pesan sebelumnya dan hapus ini?")) {
+          const messageKey = data.key;
+          const currentText = textDiv.textContent;
+
+          onValue(chatRef, (snapshot) => {
+            const messages = [];
+            snapshot.forEach((child) => {
+              messages.push({ key: child.key, ...child.val() });
+            });
+
+            const index = messages.findIndex(m => m.key === messageKey);
+            for (let i = index - 1; i >= 0; i--) {
+              if (messages[i].user === user) {
+                const prevRef = ref(db, `chat-group/${messages[i].key}`);
+                const newText = messages[i].text + " " + currentText;
+                update(prevRef, { text: newText.trim(), edited: true });
+                break;
+              }
+            }
+
+            const currentRef = ref(db, `chat-group/${messageKey}`);
+            remove(currentRef);
+            messageElement.remove();
+          }, { onlyOnce: true });
+        }
+      };
+
+      bubble.appendChild(editBtn);
+      bubble.appendChild(deleteBtn);
+    } else {
+      // [UBAHAN] Tambahkan tombol reply untuk pesan dari orang lain
+      const replyBtn = document.createElement("button");
+      replyBtn.textContent = "Balas";
+      replyBtn.className = "reply-btn";
+      replyBtn.onclick = () => {
+        replyToMessage = { user, text };
+        document.getElementById("reply-preview").style.display = "block";
+        document.getElementById("reply-user").textContent = user;
+        document.getElementById("reply-text").textContent = text;
+      };
+      bubble.appendChild(replyBtn);
+    }
+
+    messageElement.appendChild(avatar);
+    messageElement.appendChild(bubble);
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+
+  // Update tampilan jika pesan diubah
+  onChildChanged(chatRef, (data) => {
+    const messageEl = document.querySelector(`[data-id="${data.key}"]`);
+    if (messageEl) {
+      const newText = data.val().text;
+      const isEdited = data.val().edited;
+
+      const textDiv = messageEl.querySelector(".chat-text");
+      textDiv.textContent = newText;
+
+      const existingLabel = messageEl.querySelector("small");
+      if (isEdited && !existingLabel) {
+        const editedLabel = document.createElement("small");
+        editedLabel.textContent = "(diedit)";
+        editedLabel.style.color = "#888";
+        textDiv.parentElement.insertBefore(editedLabel, textDiv.nextSibling);
       }
-    });
-  </script>
-</body>
+    }
+  });
+
+  // Kirim pesan
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const user = usernameInput.value.trim();
+    const text = messageInput.value.trim();
+
+    if (user && text) {
+      // [UBAHAN] Tambahkan data reply jika ada
+      const messageData = {
+        user,
+        text,
+        timestamp: Date.now()
+      };
+
+      if (replyToMessage) {
+        messageData.replyTo = replyToMessage;
+      }
+
+      push(chatRef, messageData);
+      messageInput.value = "";
+      cancelReply(); // [UBAHAN]
+    }
+  });
+
+  // [UBAHAN] Fungsi untuk membatalkan reply
+  function cancelReply() {
+    replyToMessage = null;
+    document.getElementById("reply-preview").style.display = "none";
+    document.getElementById("reply-user").textContent = "";
+    document.getElementById("reply-text").textContent = "";
+  }
+</script>
